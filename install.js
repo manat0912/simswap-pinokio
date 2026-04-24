@@ -56,7 +56,7 @@ module.exports = {
       when: "{{!exists('app/insightface_func/models/antelope')}}",
       method: "fs.download",
       params: {
-        uri: "https://github.com/facefusion/facefusion-assets/releases/download/models/antelope.zip",
+        uri: "https://huggingface.co/haikumonster/antelope/resolve/main/antelope.zip",
         dir: "app"
       }
     },
