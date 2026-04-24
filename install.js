@@ -21,6 +21,7 @@ module.exports = {
       }
     },
     {
+      when: "{{!exists('app/arcface_model/arcface_checkpoint.tar')}}",
       method: "fs.download",
       params: {
         uri: "https://github.com/neuralchen/SimSwap/releases/download/1.0/arcface_checkpoint.tar",
@@ -28,6 +29,7 @@ module.exports = {
       }
     },
     {
+      when: "{{!exists('app/checkpoints')}}",
       method: "fs.download",
       params: {
         uri: "https://github.com/neuralchen/SimSwap/releases/download/1.0/checkpoints.zip",
@@ -35,6 +37,7 @@ module.exports = {
       }
     },
     {
+      when: "{{!exists('app/checkpoints') && exists('app/checkpoints.zip')}}",
       method: "shell.run",
       params: {
         message: "unzip checkpoints.zip -d checkpoints",
@@ -42,6 +45,7 @@ module.exports = {
       }
     },
     {
+      when: "{{exists('app/checkpoints.zip')}}",
       method: "shell.run",
       params: {
         message: "rm checkpoints.zip",
@@ -49,6 +53,7 @@ module.exports = {
       }
     },
     {
+      when: "{{!exists('app/insightface_func/models/antelope')}}",
       method: "fs.download",
       params: {
         uri: "https://github.com/facefusion/facefusion-assets/releases/download/models/antelope.zip",
@@ -56,6 +61,7 @@ module.exports = {
       }
     },
     {
+      when: "{{!exists('app/parsing_model/checkpoint/79999_iter.pth')}}",
       method: "fs.download",
       params: {
         uri: "https://github.com/neuralchen/SimSwap/releases/download/1.0/79999_iter.pth",
@@ -63,6 +69,7 @@ module.exports = {
       }
     },
     {
+      when: "{{!exists('app/insightface_func/models/antelope') && exists('app/antelope.zip')}}",
       method: "shell.run",
       params: {
         message: "unzip antelope.zip -d insightface_func/models/",
@@ -70,6 +77,7 @@ module.exports = {
       }
     },
     {
+      when: "{{exists('app/antelope.zip')}}",
       method: "shell.run",
       params: {
         message: "rm antelope.zip",
