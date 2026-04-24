@@ -51,7 +51,7 @@ module.exports = {
     {
       method: "fs.download",
       params: {
-        uri: "https://github.com/cocktailpeanut/simswap/resolve/main/antelope.zip",
+        uri: "https://github.com/facefusion/facefusion-assets/releases/download/models/antelope.zip",
         dir: "app"
       }
     },
