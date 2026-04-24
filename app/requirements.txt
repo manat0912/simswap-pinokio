@@ -2,7 +2,7 @@ opencv-python
 pillow
 numpy
 imageio
-moviepy
+moviepy==1.0.3
 insightface
 timm==0.5.4
 onnxruntime-gpu
