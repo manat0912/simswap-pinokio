@@ -1,7 +1,16 @@
 {
   "title": "SimSwap",
-  "description": "",
+  "description": "An Efficient Framework For High Fidelity Face Swapping",
   "icon": "icon.png",
-  "links": [],
+  "links": [
+    {
+      "title": "github",
+      "value": "https://github.com/neuralchen"
+    },
+    {
+      "title": "website",
+      "value": "https://github.com/neuralchen/SimSwap"
+    }
+  ],
   "posts": []
 }

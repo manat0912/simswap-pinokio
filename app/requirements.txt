@@ -1,0 +1,11 @@
+opencv-python
+pillow
+numpy
+imageio
+moviepy
+insightface
+timm==0.5.4
+onnxruntime-gpu
+requests
+tqdm
+gradio

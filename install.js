@@ -1,40 +1,80 @@
 module.exports = {
   run: [
-    // Edit this step to customize the git repository to use
     {
       method: "shell.run",
       params: {
+        venv: "env",
+        path: "app",
         message: [
-          "git clone https://github.com/neuralchen/SimSwap.git app",
-        ]
-      }
-    },
-    // Edit this step with your custom install commands
-    {
-      method: "shell.run",
-      params: {
-        venv: "env",                // Edit this to customize the venv folder path
-        path: "app",                // Edit this to customize the path to start the shell from
-        message: [
-          "uv pip install gradio devicetorch",
           "uv pip install -r requirements.txt"
         ]
       }
     },
-    // Delete this step if your project does not use torch
     {
       method: "script.start",
       params: {
         uri: "torch.js",
         params: {
-          venv: "env",                // Edit this to customize the venv folder path
-          path: "app",                // Edit this to customize the path to start the shell from
-          // flashattention: true   // uncomment this line if your project requires flashattention
-          // xformers: true   // uncomment this line if your project requires xformers
-          // triton: true   // uncomment this line if your project requires triton
-          // sageattention: true   // uncomment this line if your project requires sageattention
+          venv: "env",
+          path: "app"
         }
       }
     },
+    {
+      method: "fs.download",
+      params: {
+        uri: "https://github.com/neuralchen/SimSwap/releases/download/1.0/arcface_checkpoint.tar",
+        dir: "app/arcface_model"
+      }
+    },
+    {
+      method: "fs.download",
+      params: {
+        uri: "https://github.com/neuralchen/SimSwap/releases/download/1.0/checkpoints.zip",
+        dir: "app"
+      }
+    },
+    {
+      method: "shell.run",
+      params: {
+        message: "unzip checkpoints.zip -d checkpoints",
+        path: "app"
+      }
+    },
+    {
+      method: "shell.run",
+      params: {
+        message: "rm checkpoints.zip",
+        path: "app"
+      }
+    },
+    {
+      method: "fs.download",
+      params: {
+        uri: "https://github.com/cocktailpeanut/simswap/resolve/main/antelope.zip",
+        dir: "app"
+      }
+    },
+    {
+      method: "fs.download",
+      params: {
+        uri: "https://github.com/neuralchen/SimSwap/releases/download/1.0/79999_iter.pth",
+        dir: "app/parsing_model/checkpoint"
+      }
+    },
+    {
+      method: "shell.run",
+      params: {
+        message: "unzip antelope.zip -d insightface_func/models/",
+        path: "app"
+      }
+    },
+    {
+      method: "shell.run",
+      params: {
+        message: "rm antelope.zip",
+        path: "app"
+      }
+    }
   ]
 }

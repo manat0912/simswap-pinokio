@@ -2,13 +2,20 @@ module.exports = {
   run: [{
     method: "shell.run",
     params: {
-      message: "git pull"
+      venv: "env",
+      path: "app",
+      message: [
+        "uv pip install -r requirements.txt"
+      ]
     }
   }, {
-    method: "shell.run",
+    method: "script.start",
     params: {
-      path: "app",
-      message: "git pull"
+      uri: "torch.js",
+      params: {
+        venv: "env",
+        path: "app"
+      }
     }
   }]
 }
